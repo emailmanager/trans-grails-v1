@@ -1,0 +1,22 @@
+This plugin provides an API with almost exact parity to the Grails Mail plugin. Installing this plugin replaces the Mail plugin's sendMail method with it's own. Doing so allows use of Emailmanager without changing any code in your app or in the plugins your app depends on.
+
+It does not support attachments as Emailmanager doesn't provide that capability. If attachments are used, it will be logged as an error and continue.
+
+To install:
+    grails install-plugin emailmanager
+
+To configure, add to your Config.groovy:
+
+    emailmanager {
+        apikey = "Your API Key"
+    }
+
+If you wish to utilize the tagging feature of Emailmanager, this plugin adds a new call to the sendMail method, tag:
+	
+	sendMail {
+		to "email@example.com"
+		tag "Registration"
+	}
+
+If any plugins in your project utilize the mail plugin, they will automatically be switched to use emailmanager functionality instead.
+
